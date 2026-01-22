@@ -1,5 +1,3 @@
-// Copyright (c) 2026, Ultradent Products Inc. All rights reserved.
-
 #ifndef PROJECT_STRUCTURE_PROTOTYPE_STRUCTURE_PROTOTYPE_H_
 #define PROJECT_STRUCTURE_PROTOTYPE_STRUCTURE_PROTOTYPE_H_
 
@@ -47,7 +45,8 @@ class ComponentAImpl : public ComponentA {
       : ComponentA(std::move(callbacks)) {}
   ~ComponentAImpl() override = default;
   // Define how this implementation achieves the required task 'SomeFuncOfA'
-  void SomeFuncOfA() override {}
+  void SomeFuncOfA() override {
+  }
 };
 
 // Some Generic Component 'B' ----------------------------------------------------------------------
@@ -103,7 +102,7 @@ class Process {
   // desired component implementation grouping
 
   // Some very basic/limited API since this will be in main.
-  [[nodiscard]] int Run(volatile __sig_atomic_t stop_signal) const {
+  [[nodiscard]] int Run(const volatile sig_atomic_t& stop_signal) const {
     Init();
     while (stop_signal == 0) {
       std::this_thread::sleep_for(std::chrono::milliseconds(100));

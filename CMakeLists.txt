@@ -7,7 +7,7 @@ find_package(OpenCV 4.10 REQUIRED NO_DEFAULT_PATH PATHS "/home/pkyle/neovision/n
 link_libraries(${OpenCV_LIBS})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(fuck_around_and_find_out main.cpp)
+add_executable(example main.cpp)
 
 find_package(GTest REQUIRED NO_DEFAULT_PATH PATHS "/home/pkyle/neovision/nv_dependencies/install")
 add_executable(test test.cpp)
