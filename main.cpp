@@ -1,10 +1,12 @@
 #include <csignal>
+#include <atomic>
 
 #include "structure_prototype.h"
 
-volatile sig_atomic_t g_quit = 0;
-void SignalHandler(int signal) {
-  g_quit = signal;
+std::atomic<bool> g_quit = false;
+static_assert(std::atomic<bool>::is_always_lock_free);
+void SignalHandler(int) {
+  g_quit.store(true, std::memory_order_relaxed);
 }
 
 int main() {

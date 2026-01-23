@@ -102,9 +102,9 @@ class Process {
   // desired component implementation grouping
 
   // Some very basic/limited API since this will be in main.
-  [[nodiscard]] int Run(const volatile sig_atomic_t& stop_signal) const {
+  [[nodiscard]] int Run(const std::atomic<bool>& quit) const {
     Init();
-    while (stop_signal == 0) {
+    while (!quit) {
       std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     return 0;
