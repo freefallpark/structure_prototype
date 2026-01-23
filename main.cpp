@@ -10,8 +10,8 @@ void SignalHandler(int) {
 }
 
 int main() {
-  signal(SIGINT, SignalHandler);
-  signal(SIGTERM, SignalHandler);
+  std::signal(SIGINT, SignalHandler);
+  std::signal(SIGTERM, SignalHandler);
   const Process p;
   return p.Run(g_quit);
 }
